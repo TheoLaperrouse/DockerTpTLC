@@ -1,0 +1,30 @@
+nginxproxy:
+  image: jwilder/nginx-proxy
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock
+  ports:
+    - "8080:80"
+    
+client:
+  image: nginx
+  environment:
+      - VIRTUAL_HOST=m
+
+#lancer avec l'option --scale client = 4 ou décommenter les lignes après
+
+#client2:
+#  image: nginx
+#  environment:
+#      - VIRTUAL_HOST=m
+#
+#client3:
+#  image: nginx
+#  environment:
+#      - VIRTUAL_HOST=m
+#
+#client4:
+#  image: nginx
+#  environment:
+#      - VIRTUAL_HOST=m
+# docker ps -> docker logs sur les clients
+# Et faire des requêtes sur m:8080 avec curl ou via navigateur
