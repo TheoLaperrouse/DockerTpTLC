@@ -1,10 +1,10 @@
 FROM ubuntu
 #EXPOSE 8080 -> -P dans le docker run pour exposer le port
-COPY /TPDockerSampleApp /TPDockerSampleApp
+COPY /TPDocker /TPDocker
 RUN apt-get update
 RUN apt-get install -y openjdk-8-jdk
 RUN apt-get install -y maven
-WORKDIR TPDockerSampleApp
+WORKDIR TPDocker
 RUN mvn install:install-file -Dfile=lib/opencv-3410.jar -DgroupId=org.opencv -DartifactId=opencv -Dversion=3.4.10 -Dpackaging=jar
 RUN mvn package
 ENTRYPOINT java -Djava.library.path=lib/ubuntuupperthan18/ -jar target/fatjar-0.0.1-SNAPSHOT.jar
@@ -17,7 +17,7 @@ ENTRYPOINT java -Djava.library.path=lib/ubuntuupperthan18/ -jar target/fatjar-0.
 #RUN apt-get install -f libpng16-16
 #RUN apt-get install -f libdc1394-22
 #RUN apt-get install -y git
-#RUN git clone https://github.com/barais/TPDockerSampleApp
+#RUN git clone https://github.com/barais/TPDocker
 
 #Commande à exécuter pour gérer le container:
 
